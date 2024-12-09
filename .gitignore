@@ -1,0 +1,9 @@
+*.xml
+*.toc
+*.aux
+*.bcf
+*.log
+*.out
+# /plasma_physics/text/*.pdf
+*:Zone.Identifier
+.pptx
