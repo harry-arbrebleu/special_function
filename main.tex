@@ -1,10 +1,21 @@
 \documentclass{report}
 \input{head.tex}
 \begin{document}
-  \chapter{特殊函数の紹介}
-    \section{物理と特殊函数}
-      特殊函数は物理が用いる数学の道具である．
-      WIP
+  \begin{abstract}
+    本テクストは特殊函数と量子力学の繋がりを説明する．
+    量子力学の究極的な目標は，系の状態ベクトルを把握することである．
+    量子力学の基本的な要請により，系の状態ベクトル$\ket{\psi}$は，
+    \begin{align}
+      \hat{H}\ket{\psi} = E\ket{\psi}
+    \end{align}
+    なる固有方程式に帰着する．
+    状態ベクトルは，考えている系の情報を全て含むものであり，$\ket{\psi}$と系の状態が1対1対応する．
+    例えば，電子はスピンと呼ばれる物理量を持ち，スピンは上向きか下向きの2種類しか存在しないことがStern-Gerlachの実験により知られている．
+    Stern-Gerklachの実験のセットアップでは，電子の状態ベクトルは上向きスピンと下向きスピンの2つの基底で
+  \end{abstract}
+    \chapter{特殊函数}
+    本章では数ある特殊函数のうち，Strum-Liouville演算子と呼ばれるクラスの演算子の固有函数を扱う．
+    この演算子のクラスは極めて性質が良いことが知られている．
     \section{Hermite演算子}
       \begin{mydef}{Hermite演算子}{}
         内積が定義されている函数空間$V$の任意の元$f$，$g$に対して，
@@ -15,12 +26,12 @@
       \end{mydef}
     \section{Strum-Liouvillle演算子}
       \begin{mydef}{Strum-Liouville演算子}{}
-        $a < b$として，$x\in \qty[a, b]$で定義された関数空間$V$を考える．$\rho(x)$を非負の実数関数として，$f, g\in V$に対して，
+        $a < b$として，$x\in \qty[a, b]$で定義された函数空間$V$を考える．$\rho(x)$を非負の実数函数として，$f, g\in V$に対して，
         \begin{align}
           \inner{f}{g} \coloneqq \int_{a}^{b} f^*(x)g(x)\rho(x)\dd{x}
         \end{align}
         なる内積を入れる．
-        関数空間$V$上の演算子として$\mathcal{L}$を，
+        函数空間$V$上の演算子として$\mathcal{L}$を，
         \begin{align}
           \mathcal{L} \coloneqq \frac{1}{\rho(x)}\qty[\dv{x}\qty{p(x)\dv{x}} + q(x)]\label{strum-liouville-operator-def}
         \end{align}
@@ -51,17 +62,18 @@
             &= \qty[f^*(x)p(x)g'(x)]_{a}^{b} - \qty[f'^*(x)p(x)g(x)]_{a}^{b} + \inner{g}{\mathcal{L}f}^* \\ 
             &= \qty[f^*(x)p(x)g'(x)]_{a}^{b} - \qty[g(x)p(x)f'^*(x)]_{a}^{b} + \inner{\mathcal{L}f}{g} 
           \end{align}
-          となる．第1項と第2項について，第1項に$f(a) = f(b)$を，第2項に$p(x)$が実数値関数であり$p(a)f'(a) = p(b)f'(b)$であることを用いると
+          となる．第1項と第2項について，第1項に$f(a) = f(b)$を，第2項に$p(x)$が実数値函数であり$p(a)f'(a) = p(b)f'(b)$であることを用いると
           \begin{align}
             \qty[f^*(x)p(x)g'(x)]_{a}^{b} - \qty[f'^*(x)p(x)g(x)]_{a}^{b} = \qty{p(b)g'(b) - p(a)f(a)}f^*(a) - \qty{g(b) - g(a)}p(a)f'(a)
           \end{align}
-          を得る．今度は，第1項に$p(x)$が実数値関数であり$p(a)g'(a) = p(b)g'(b)$であることを，第2項に$g(a) = g(b)$を用いれば，
+          を得る．今度は，第1項に$p(x)$が実数値函数であり$p(a)g'(a) = p(b)g'(b)$であることを，第2項に$g(a) = g(b)$を用いれば，
           \begin{align}
             \inner{f}{\mathcal{L}g} = \inner{\mathcal{L}f}{g}
           \end{align}
           を得る．
         \end{proof}
       \end{myprop}
+    \section{Hermite多項式}
     \section{Legendre多項式}
       \begin{mydef}{$\mathcal{L}_m$の定義}{}
         演算子$\mathcal{L}_m$を，
@@ -95,7 +107,7 @@
         となる．
       \end{myrem}
       \begin{myprop}{$\mathcal{L}_m$のHermite性}{}
-        演算子$\mathcal{L}$はHermite演算子である．
+        演算子$\mathcal{L}_m$はHermite演算子である．
         \tcblower
         \begin{proof}
           たとえば，$g'(x) = p(x)$となるように$g(x)$を定めれば，$f(1) = f(-1) = 0$となる．
@@ -189,7 +201,7 @@
         WIP
       \end{myprop}
       Legendre多項式の直交性とノルムを調べる．
-      Legendre陪多項式の直交性は$\mathcal{L}_m$がHermite演算子であり，その固有関数である$P_n^m(x)$が直交することより従う．
+      Legendre陪多項式の直交性は$\mathcal{L}_m$がHermite演算子であり，その固有函数である$P_n^m(x)$が直交することより従う．
       自分自身との内積，つまり，$\inner{P_n^m(x)}{P_n^m(x)}$の値を計算する．
       \refe{assos-legendre-polynominal}を用いて，\refe{inner-prod-legendre}で示した内積の定義に従って計算する．
       $n + m$回部分積分を行うと，
@@ -253,7 +265,7 @@
         \inner{P_{n'}^m(x)}{P_{n}^m(x)} = \delta_{n}^{n'}\frac{2}{2n + 1}\frac{(n + m)!}{(n - m)!}\label{pnm-norm}
       \end{align}
       となる．
-    \section{Bessel関数}
+    \section{Bessel函数}
       \begin{mydef}{$\mathcal{L}_{\nu}$の定義}{}
         函数空間は，$\qty[0, a]$で$C^1$級の複素函数全体であるとする．
         $\mathcal{L}_{\nu}$を，
@@ -331,7 +343,7 @@
         &= u_0z^{\nu}\sum_{n = 0}(-1)^n\frac{2^{\nu}\nu!}{2^nn!(\nu + n)!2^{\nu + n}} z^{2n} \\ 
         &= u_0\nu!2^{\nu}\sum_{n = 0}\frac{1}{n!(\nu + n)!}\qty(\frac{z}{2})^{\nu + 2n}
       \end{align}
-      となる．$\nu \notin \mathbb{Z}$のときも，表せるようにガンマ関数をもちいて一般化する．
+      となる．$\nu \notin \mathbb{Z}$のときも，表せるようにガンマ函数を用いて一般化する．
       \refe{bessel-differential-eq}の形より，明らかに定数倍が許容されるから，
       \begin{align}
         u_0 = \frac{1}{2^{\nu}\Gamma(\nu + 1)}
@@ -340,33 +352,110 @@
       \begin{align}
         J_{\nu}(z) &= \sum_{n}\frac{(-1)^n}{n!\Gamma(\nu + k + 1)}\qty(\frac{z}{2})^{\nu + 2n}
       \end{align}
-      を得る．$J_{\nu}(z)$をBessel関数という．
+      を得る．$J_{\nu}(z)$をBessel函数という．
       また，$\alpha = -\nu$を採用したときは，
       \begin{align}
         J_{-\nu}(z) &= \sum_{n}\frac{(-1)^n}{n!\Gamma(-\nu + k + 1)}\qty(\frac{z}{2})^{-\nu + 2n}
       \end{align}
       となり，これは$\nu \notin \mathbb{Z}$のときに$J_{\nu}(z)$と独立な解となることが示せる．
-      $J_{-\nu}(z)$をNeumann関数という．
+      $J_{-\nu}(z)$をNeumann函数という．
       \par
-      得られたBessel関数とNeumann関数を用いて，
+      得られたBessel函数とNeumann函数を用いて，
       \begin{align}
         j_n(z) &\coloneqq \sqrt{\frac{\pi}{2z}}J_{n + \frac{1}{2}}(z) \\ 
         y_n(z) &\coloneqq (-1)^{n + 1}\sqrt{\frac{\pi}{2z}}J_{-n-\frac{1}{2}}(z) \\ 
       \end{align}
-      を定義する．$j_n(z)$と$y_n(z)$はそれぞれ，球Bessel関数，球Neumann関数という．
-      さらに，球Bessel関数と球Neumann関数を用いて，
+      を定義する．$j_n(z)$と$y_n(z)$はそれぞれ，球Bessel函数，球Neumann函数という．
+      さらに，球Bessel函数と球Neumann函数を用いて，
       \begin{align}
         h_n^{(1)}(z) &\coloneqq j_n(z) + \i y_n(z) \\ 
         h_n^{(2)}(z) &\coloneqq j_n(z) - \i y_n(z)
       \end{align}
-      を定義する．$h_n^{(1)}$と$h_n^{(2)}$はそれぞれ，第1種Hankel関数，第2種Hankel関数という．
-  \chapter{物理法則と特殊函数}
+      を定義する．$h_n^{(1)}$と$h_n^{(2)}$はそれぞれ，第1種Hankel函数，第2種Hankel函数という．
+  \chapter{物理現象}
+    \section{Schr\"odinger方程式}
+      1次元調和振動子モデルを考えよう．
+      Schr\"odinger方程式は，
+      \begin{align}
+        \qty(-\frac{\hbar}{2m}\dv[2]{x} + \frac{1}{2}m\omega^2x^2)\psi(x) &= E\psi(x)\label{schrodinger-eq-wave-func}
+      \end{align}
+      である．
+      いささか唐突だが，波動函数が，
+      \begin{align}
+        \psi(x) &= f(s)\exp\qty(-\frac{s^2}{2}) \label{psi-fs}\\ 
+        s &\coloneqq \sqrt{\frac{m\omega}{\hbar}}x\label{s-def}
+      \end{align}
+      と書けたとする．$f(s)$がHermite多項式となることを示す．
+      \par
+      \refe{schrodinger-eq-wave-func}の両辺を$-\frac{\hbar^2}{2m}$で割って，$x$から$s$に変数変換\footnote{
+        この変数変換は$x$の無次元化ともとらえられる．
+        実際に\refe{s-def}の右辺の次元を調べると，
+        \begin{align*}
+          \sqrt{\frac{\r{kg\cdot s^{-1}}}{\r{kg\cdot m^2\cdot s^{-2}\cdot s}}}\r{m} = 1
+        \end{align*}
+        である．
+      }すると，
+      \begin{align}
+        \qty(-\frac{\hbar}{2m}\dv[2]{x} + \frac{1}{2}m\omega^2x^2)\psi(x) &= E\psi(x) \\ 
+        \Leftrightarrow \qty[\dv[2]{x} - \frac{m^2\omega^2}{\hbar^2}x^2 + \frac{2mE}{\hbar}]\psi(x) &= 0 \\ 
+        \Leftrightarrow \qty[\qty(\dv{s}{x})^2\dv[2]{s} - \frac{\hbar}{m\omega}s^2 + \frac{2mE}{\hbar^2}]f(s)\exp\qty(-\frac{s^2}{2}) &= 0 \\ 
+        \Leftrightarrow \qty[\frac{m\omega}{\hbar}\dv[2]{s} - \frac{\hbar}{m\omega}s^2 + \frac{2mE}{\hbar^2}]f(s)\exp\qty(-\frac{s^2}{2}) &= 0 \\ 
+        \Leftrightarrow \qty(\dv[2]{s} - s^2 + \frac{2E}{\hbar\omega})f(s)\exp\qty(-\frac{s^2}{2}) &= 0 \label{before-hermite-polynominal}
+      \end{align}
+      と書ける．第1項について，$\dv[2]{s}f(s)\exp\qty(-\frac{s^2}{2})$を計算しよう．
+      Leibniz則より，
+      \begin{align}
+        \dv[2]{s}f(s)\exp\qty(-\frac{s^2}{2}) &= \dv[2]{f}{s}\exp\qty(-\frac{s^2}{2}) + 2\dv{f}{s}\dv{s}\qty(\exp\qty(-\frac{s^2}{2})) + f(s)\dv[2]{s}\qty(\exp\qty(-\frac{s^2}{2})) \\ 
+        &= \dv[2]{f}{s}\exp\qty(-\frac{s^2}{2}) - 2s\dv{f}{s}\exp\qty(-\frac{s^2}{2}) + f(s)\qty(s^2 - 1)e\exp\qty(-\frac{s^2}{2}) \\ 
+        &= \qty(\dv[2]{s} - 2s\dv{s} + \qty(s^2 - 1))f(s)\exp\qty(-\frac{s^2}{2})
+      \end{align}
+      と計算できるから，\refe{before-hermite-polynominal}は，
+      \begin{align}
+        \qty(\dv[2]{s} - s^2 + \frac{2E}{\hbar\omega})f(s)\exp\qty(-\frac{s^2}{2}) &= 0 \\ 
+        \Leftrightarrow \qty(\dv[2]{s} - 2s\dv{s} + \qty(s^2 - 1) - s^2 + \frac{2E}{\hbar\omega})f(s)\exp\qty(-\frac{s^2}{2}) &= 0 \\ 
+        \Rightarrow \qty(\dv[2]{s} - 2s\dv{s} + \frac{2E}{\hbar\omega} - 1)f(s) &= 0
+      \end{align}
+      となる．
+      Hermite多項式の形は，
+      \begin{align}
+        \qty(\dv[2]{s} - 2s\dv{s} + 2n)H_n(s) = 0
+      \end{align}
+      であったから，
+      \begin{align}
+        \frac{2E}{\hbar\omega} - 1 &= 2n \\ 
+        f(s) &\to H_n(s)
+      \end{align}
+      とすれば良いことがわかる．
+      $n$は非負整数で，$n = 0$では零点振動に対応する．
+      規格化定数を$A$とすれば，波動函数は，
+      \begin{align}
+        \psi_n(x) = AH_n(s)\exp\qty(-\frac{s^2}{2})
+      \end{align}
+      と書ける．
+      規格化定数は，
+      \begin{align}
+        1 &= \int\dd{x}\abs{\psi(x)}^2 \\ 
+        &= \abs{A}^2\int\dd{x}H_n(s)H_n(s)\e^{-s^2} \\ 
+        &= \abs{A}^2\sqrt{\frac{\hbar}{m\omega}}\int\dd{s}H_n(s)H_n(s)\e^{-s^2} \\ 
+        &= \abs{A}^2\sqrt{\frac{\hbar}{m\omega}}\sqrt{\pi}2^nn! 
+      \end{align}
+      より，
+      \begin{align}
+        A = \sqrt{\frac{1}{2^nn!}\sqrt{\frac{m\omega}{\pi\hbar}}}
+      \end{align}
+      となる．波動函数は，
+      \begin{align}
+        \psi(x) = \sqrt{\frac{1}{2^nn!}\sqrt{\frac{m\omega}{\pi\hbar}}}H_n\qty(\sqrt{\frac{m\omega}{\hbar}}x)\exp\qty(-\frac{m\omega}{2\hbar}x^2)
+      \end{align}
+      となる．
     \section{Helmholtz方程式}
       Helmholtz方程式，
       \begin{align}
         \qty(\laplacian + \kappa^2)u(r, \theta, \phi) = 0\label{helmholtz-eq-wave}
       \end{align}
       を考える．
+      Helmholtzが登場する物理系を少し検討しよう．
+      % 散乱問題の話したいけど，それより前に角運動量演算子の固有函数って言わないと...
       $u(\bm{r})$を直交基底である$\e^{\i m\phi}$で展開すると，
       \begin{align}
         A_m(r, \theta) &\coloneqq \int_{0}^{2\pi}u(r, \theta, \phi)\e^{-\i m\phi}\dd{\phi} \\ 
@@ -453,26 +542,26 @@
       \end{align}
       を比べると，\refe{bessel-differential-eq-sub-2}において，
       \begin{align}
-        z &\to x \\ 
+        z &\to \rho \\ 
         \nu &= n + \frac{1}{2}
       \end{align}
       としたものであると分かる．
-      つまり，$C_{nm}(\rho)$はBessel関数$J_{n + \frac{1}{2}}(\rho)$とNeumann関数$J_{-n - \frac{1}{2}}(\rho)$の線型結合で書かれるので，
-      係数をそれぞれ$a'_{nm}$，$b'_{nm}$として，
+      つまり，$C_{nm}(\rho)$はBessel函数$J_{n + \frac{1}{2}}(\rho)$とNeumann函数$J_{-n - \frac{1}{2}}(\rho)$の線型結合で書かれるので，
+      係数をそれぞれ$a''_{nm}$，$b''_{nm}$として，
       \begin{align}
-        C_{nm}(\rho) = a'_{nm}J_{n + \frac{1}{2}}(\rho) + b'_{nm}J_{-n - \frac{1}{2}}(\rho)\label{expand-cnm-ans-tmp}
+        C_{nm}(\rho) = a''_{nm}J_{n + \frac{1}{2}}(\rho) + b''_{nm}J_{-n - \frac{1}{2}}(\rho)\label{expand-cnm-ans-tmp}
       \end{align}
       と書く．
-      今後の変形のために，球Bessel関数$j_n(\rho)$と球Neumann関数$y_n(\rho)$を用いて\refe{expand-cnm-ans-tmp}を書き直せば，
+      今後の変形のために，球Bessel函数$j_n(\rho)$と球Neumann函数$y_n(\rho)$を用いて\refe{expand-cnm-ans-tmp}を書き直せば，
       \begin{align}
-        C_{nm}(\rho) &= a'_{nm}J_{n + \frac{1}{2}}(\rho) + b'_{nm}J_{-n - \frac{1}{2}}(\rho) \\ 
-        &= \sqrt{\frac{2\rho}{\pi}}a'_{nm}j_n(\rho) + \sqrt{\frac{2\rho}{\pi}}b'_{mn}y_n(\rho) \\ 
-        &= \sqrt{\rho}\qty[a_{nm}j_n(\rho) + b_{mn}y_n(\rho)] \label{expand-cnm-ans}
+        C_{nm}(\rho) &= a''_{nm}J_{n + \frac{1}{2}}(\rho) + b''_{nm}J_{-n - \frac{1}{2}}(\rho) \\ 
+        &= \sqrt{\frac{2\rho}{\pi}}a''_{nm}j_n(\rho) + \sqrt{\frac{2\rho}{\pi}}b''_{mn}y_n(\rho) \\ 
+        &= \sqrt{\rho}\qty[a'_{nm}j_n(\rho) + b'_{mn}y_n(\rho)] \label{expand-cnm-ans}
       \end{align}
       である．ただし，
       \begin{align}
-        a_{nm} &\coloneq a'_{nm}\sqrt{\frac{2}{\pi}} \\ 
-        b_{nm} &\coloneq b'_{nm}\sqrt{\frac{2}{\pi}}
+        a'_{nm} &\coloneq a''_{nm}\sqrt{\frac{2}{\pi}} \\ 
+        b'_{nm} &\coloneq b''_{nm}\sqrt{\frac{2}{\pi}}
       \end{align}
       と定めた．
       \par
@@ -483,11 +572,11 @@
         \text{\refe{am-expand-with-pnm}より}&\ A_m(r, \theta) = \sum_{n = \abs{m}}^{\infty}B_{nm}(r)P_{n}^{\abs{m}}(\cos\theta) \\ 
         \text{\refe{rho-def}より}&\ \rho = \kappa r \\ 
         \text{\refe{cnm-def}より}&\ B_{nm}(r) = \frac{1}{\sqrt{\rho}}C_{nm}(\rho) \\ 
-        \text{\refe{expand-cnm-ans}より}&\ C_{nm}(\rho) = \sqrt{\rho}\qty[a_{nm}j_n(\rho) + b_{mn}y_n(\rho)]
+        \text{\refe{expand-cnm-ans}より}&\ C_{nm}(\rho) = \sqrt{\rho}\qty[a'_{nm}j_n(\rho) + b'_{mn}y_n(\rho)]
       \end{align}
       となる．下から上に全て代入して整理すると，
       \begin{align}
-        u(r, \theta, \phi) = \sum_{m = -\infty}^{\infty}\sum_{n = \abs{m}}^{\infty}\qty[a_{nm}j_n(\kappa r) + b_{nm}y_n(\kappa r)] P_{n}^{\abs{m}}(\cos\theta)\e^{\i m\phi} \label{u-expand-form1}
+        u(r, \theta, \phi) = \sum_{m = -\infty}^{\infty}\sum_{n = \abs{m}}^{\infty}\qty[a'_{nm}j_n(\kappa r) + b'_{nm}y_n(\kappa r)] P_{n}^{\abs{m}}(\cos\theta)\e^{\i m\phi} \label{u-expand-form1}
       \end{align}
       となる．
       今後の計算を行うとき，
@@ -495,15 +584,21 @@
         \inner{\e^{\i m'\phi}}{\e^{\i m\phi}} &= 2\pi\delta_m^{m'} \\ 
         \inner{P_{n'}^m(x)}{P_n^m(x)} &= \delta_{n}^{n'}\frac{2}{2n + 1}\frac{(n + m)!}{(n - m)!}
       \end{align}
-      となっているのはいささか都合が悪いので，球面分布函数$Y_{nm}(\theta, \phi)$を，
+      のように規格化されていないのはいささか都合が悪いので，球面分布函数$Y_{nm}(\theta, \phi)$を，
       \begin{align}
-        Y_{nm}(\theta, \phi) &\coloneqq (-1)^m\qty(\frac{1}{2\pi})^{1/2}\qty(\frac{2n + 1}{2}\frac{(n - m)!}{(n + m)!})P_n^m(x)\e^{\i m\phi} \\ 
-        &= (-1)^m\sqrt{\frac{2n + 1}{4\pi}\frac{(n - m)!}{(n + m)!}}P_n^m(x)\e^{\i m\phi}
+        Y_{nm}(\theta, \phi) &\coloneqq (-1)^m\qty(\frac{1}{2\pi})^{1/2}\qty(\frac{2n + 1}{2}\frac{(n - m)!}{(n + m)!})^{1/2}P_n^m(\cos\theta)\e^{\i m\phi} \\ 
+        &= (-1)^m\sqrt{\frac{2n + 1}{4\pi}\frac{(n - m)!}{(n + m)!}}P_n^m(\cos\theta)\e^{\i m\phi}
       \end{align}
       として定義しておく．
-      球面分布函数を用いて\refe{u-expand-form1}を書き換えれば，
+      球面分布函数を用いて\refe{u-expand-form1}を書き換えれば，定数倍は$a'_{nm}$や$b'_{nm}$で吸収することにして，
       \begin{align}
-        u(r, \theta, \phi) = \sum_{m = -\infty}^{\infty}\sum_{n = \abs{m}}^{\infty}\qty[a_{nm}j_n(\kappa r) + b_{nm}y_n(\kappa r)](-1)^m\sqrt{\frac{2n + 1}{4\pi}\frac{(n - m)!}{(n + m)!}}P_n^m(x)\e^{\i m\phi} \label{u-expand-form2}
+        u(r, \theta, \phi) = \sum_{m = -\infty}^{\infty}\sum_{n = \abs{m}}^{\infty}\qty[a_{nm}j_n(\kappa r) + b_{nm}y_n(\kappa r)]Y_{nm}(\theta, \phi)\label{u-expand-form2}
       \end{align}
-      となる．定数倍は$a_{nm}$や$b_{nm}$で吸収することにする．
-  \end{document}
+      となる．
+      当然，
+      \begin{align}
+        a_{nm} &\coloneqq \qty[(-1)^m\sqrt{\frac{2n + 1}{4\pi}\frac{(n - m)!}{(n + m)!}}]^{-1}a'_{nm} \\ 
+        b_{nm} &\coloneqq \qty[(-1)^m\sqrt{\frac{2n + 1}{4\pi}\frac{(n - m)!}{(n + m)!}}]^{-1}b'_{nm}
+      \end{align}
+      である．
+    \end{document}
